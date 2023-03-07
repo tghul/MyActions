@@ -5,10 +5,10 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+#   push:
+#     branches: [ "master" ]
+#   pull_request:
+#     branches: [ "master" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -27,4 +27,7 @@ jobs:
           git clone https://github.com/BPI-SINOVOIP/BPI-M2P-bsp-4.4.git
           cd BPI-M2P-bsp-4.4
           ./build.sh BPI-M2Z-720P 1
-          
+      - uses: actions/upload-artifact@v3.1.2
+        with:
+          name: BPI-M2Z-720P-linux4.4-8k.img.gz
+          path: usr/lib/u-boot/bananapi/bpi-m2z/BPI-M2Z-720P-linux4.4-8k.img.gz
