@@ -28,6 +28,11 @@ jobs:
           git clone --recurse-submodules https://github.com/Ai-Thinker-Open/Ai-Thinker-Open_ESP32-CAMERA_LAN.git
           zip -r Ai-Thinker-Open_ESP32-CAMERA_LAN.zip Ai-Thinker-Open_ESP32-CAMERA_LAN
 
+      - uses: actions/upload-artifact@v3.1.2
+        with:
+          name: Ai-Thinker-Open_ESP32-CAMERA_LAN.zip
+          path: Ai-Thinker-Open_ESP32-CAMERA_LAN.zip
+
       - name: Tar Ai-Thinker-Open_ESP32-CAMERA_LAN repo   
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
