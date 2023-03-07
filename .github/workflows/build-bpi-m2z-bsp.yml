@@ -20,8 +20,11 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-      
-      - name: git clone https://github.com/BPI-SINOVOIP/BPI-M2Z-bsp.git
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '2.7' 
+          
+      - name: Build BPI-M2Z-bsp
         run: |
           git clone https://github.com/BPI-SINOVOIP/BPI-M2Z-bsp.git
           cd BPI-M2Z-bsp
