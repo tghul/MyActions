@@ -14,9 +14,9 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  inputs:
-    tags:
-      description: 'Test scenario tags'
+    inputs:
+      tags:
+        description: 'Test scenario tags'
 
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -30,7 +30,7 @@ jobs:
       - name: Build BPI-M2Z-bsp
         run: |
           sudo apt-get install u-boot-tools
-          git clone https://github.com/BPI-SINOVOIP/BPI-M2P-bsp-4.4.git
+          git clone -b tghul-patch-1 git@github.com:tghul/BPI-M2P-bsp-4.4.git
           cd BPI-M2P-bsp-4.4
           ./build.sh BPI-M2Z-720P 1
         
