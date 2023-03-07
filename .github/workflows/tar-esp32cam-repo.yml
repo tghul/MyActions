@@ -5,8 +5,10 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
-#   push:
-#     branches: [ "master" ]
+  push:
+    branches: [ "master" ]
+    paths:   # 这里是用来指定哪个文件更改，才会触发的
+      - '.github/workflows/tar-esp32cam-repo.yml'
 #   pull_request:
 #     branches: [ "master" ]
 
@@ -15,24 +17,19 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build_bpi_m2z:
+  tar-esp32cam-repo:
     runs-on: ubuntu-20.04
     
     steps:
       - uses: actions/checkout@v3
-          
-      - name: Build BPI-M2Z-bsp
+
+      - name: Git clone 
         run: |
-          sudo apt-get install u-boot-tools
-          git clone https://github.com/BPI-SINOVOIP/BPI-M2P-bsp-4.4.git
-          cd BPI-M2P-bsp-4.4
-          ./build.sh BPI-M2Z-720P 1
-      # - uses: actions/upload-artifact@v3.1.2
-      #   with:
-      #     name: BPI-M2Z-720P-linux4.4-8k.img.gz
-      #     path: /usr/lib/u-boot/bananapi/bpi-m2z/BPI-M2Z-720P-linux4.4-8k.img.gz
-      - name: Release   
+          git clone --recurse-submodules https://github.com/Ai-Thinker-Open/Ai-Thinker-Open_ESP32-CAMERA_LAN.git
+          zip -r Ai-Thinker-Open_ESP32-CAMERA_LAN.zip Ai-Thinker-Open_ESP32-CAMERA_LAN
+
+      - name: Tar Ai-Thinker-Open_ESP32-CAMERA_LAN repo   
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with: 
-          files: /usr/lib/u-boot/bananapi/bpi-m2z/BPI-M2Z-720P-linux4.4-8k.img.gz
+          files: Ai-Thinker-Open_ESP32-CAMERA_LAN.zip
