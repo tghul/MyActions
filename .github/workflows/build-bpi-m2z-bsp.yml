@@ -23,6 +23,8 @@ jobs:
       
       - name: git clone https://github.com/BPI-SINOVOIP/BPI-M2Z-bsp.git
         run: |
+          apt-get install pv
+          curl -sL https://github.com/BPI-SINOVOIP/bpi-tools/raw/master/bpi-tools | sudo -E bash
           git clone https://github.com/BPI-SINOVOIP/BPI-M2Z-bsp.git
           cd BPI-M2Z-bsp
           ./build.sh BPI-M2Z-720P 1
