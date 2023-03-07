@@ -23,7 +23,7 @@ jobs:
           
       - name: Build BPI-M2Z-bsp
         run: |
-          https://github.com/BPI-SINOVOIP/BPI-M2P-bsp-4.4.git
+          git clone https://github.com/BPI-SINOVOIP/BPI-M2P-bsp-4.4.git
           cd BPI-M2P-bsp-4.4
           ./build.sh BPI-M2Z-720P 1
           
