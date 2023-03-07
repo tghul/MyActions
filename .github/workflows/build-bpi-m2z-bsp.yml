@@ -14,6 +14,10 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+  inputs:
+    tags:
+      description: 'Test scenario tags'
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,13 +33,14 @@ jobs:
           git clone https://github.com/BPI-SINOVOIP/BPI-M2P-bsp-4.4.git
           cd BPI-M2P-bsp-4.4
           ./build.sh BPI-M2Z-720P 1
-          mv /usr/lib/u-boot/bananapi/bpi-m2z/BPI-M2Z-720P-linux4.4-8k.img.gz ./
+        
+
       # - uses: actions/upload-artifact@v3.1.2
       #   with:
       #     name: BPI-M2Z-720P-linux4.4-8k.img
       #     path: BPI-M2Z-720P-linux4.4-8k.img.gz
-      - name: Release   
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        with: 
-          files: BPI-M2Z-720P-linux4.4-8k.img.gz
+      # - name: Release   
+      #   uses: softprops/action-gh-release@v1
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   with: 
+      #     files: BPI-M2Z-720P-linux4.4-8k.img.gz
