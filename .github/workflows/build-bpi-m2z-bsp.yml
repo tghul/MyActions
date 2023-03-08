@@ -29,7 +29,9 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-          
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '2.7' 
       - name: Git clone and build
         run: |
           sudo apt-get install tree

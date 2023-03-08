@@ -54,7 +54,7 @@ jobs:
         # if: startsWith(github.ref, 'refs/tags/')
         with: 
           tag_name: bpi-m2p-bsp-${{ steps.date.outputs.date }}
-          name: Release ${{ steps.date.outputs.date }}
+          name: Release BPI-M2P-bsp-4.4 ${{ steps.date.outputs.date }}
           files: |
             BPI-M2P-bsp-4.4/out/100MB/*
             BPI-M2P-bsp-4.4/tree.txt
