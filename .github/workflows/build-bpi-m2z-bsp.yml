@@ -39,7 +39,7 @@ jobs:
       #   with:
       #     name: BPI-M2Z-720P-linux4.4-8k.img
       #     path: BPI-M2Z-720P-linux4.4-8k.img.gz
-      # - name: Release   
+      - name: Release   
         uses: softprops/action-gh-release@v1
         # if: startsWith(github.ref, 'refs/tags/')
         with: 
