@@ -38,13 +38,15 @@ jobs:
           cd BPI-M2P-bsp-4.4
           ./build.sh BPI-M2Z-720P 1
           echo ls `pwd`
+          ls
           echo tree `pwd`
-          tree > tree.txt
+          tree | tee tree.txt
           cd ..
         
       - name: Get current date
         id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
+        # run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
+        run: echo "date=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
 
       - name: Release   
         uses: softprops/action-gh-release@v1

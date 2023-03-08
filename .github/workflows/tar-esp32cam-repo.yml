@@ -42,7 +42,8 @@ jobs:
       #     path: Ai-Thinker-Open_ESP32-CAMERA_LAN.zip
       - name: Get current date
         id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
+        # run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
+        run: echo "date=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
 
       - name: Tar Ai-Thinker-Open_ESP32-CAMERA_LAN repo   
         uses: softprops/action-gh-release@v1
