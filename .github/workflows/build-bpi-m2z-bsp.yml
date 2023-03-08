@@ -40,15 +40,15 @@ jobs:
           cd ..
         
 
-      - uses: actions/upload-artifact@v3.1.2
-        with:
-          name: tree
-          path: BPI-M2P-bsp-4.4/tree.txt
+      # - uses: actions/upload-artifact@v3.1.2
+      #   with:
+      #     name: tree
+      #     path: BPI-M2P-bsp-4.4/tree.txt
       - name: Release   
         uses: softprops/action-gh-release@v1
         # if: startsWith(github.ref, 'refs/tags/')
         with: 
-          tag_name: ${{ github.ref }}
+          tag_name: bpi-m2z-linux4.4
           name: Release ${{ github.ref }}
           files: |
             BPI-M2P-bsp-4.4/out/100MB/BPI-M2Z-720P-linux4.4-8k.img
