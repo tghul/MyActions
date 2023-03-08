@@ -25,7 +25,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  Build-BPI-M2P-bsp-4.4:
+  Build-BPI-M2P-bsp:
     runs-on: ubuntu-20.04
     
     steps:
