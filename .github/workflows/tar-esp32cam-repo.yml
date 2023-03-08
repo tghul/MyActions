@@ -38,6 +38,6 @@ jobs:
 
       - name: Tar Ai-Thinker-Open_ESP32-CAMERA_LAN repo   
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        # if: startsWith(github.ref, 'refs/tags/')
         with: 
           files: Ai-Thinker-Open_ESP32-CAMERA_LAN.zip
