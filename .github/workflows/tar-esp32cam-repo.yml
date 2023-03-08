@@ -8,9 +8,9 @@ permissions:
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
-  push:
-    tags:
-      - "esp32cam*"
+  # push:
+  #   tags:
+  #     - "esp32cam*"
     # branches: [ "master" ]
     # paths:   # 这里是用来指定哪个文件更改，才会触发的
     #   - '.github/workflows/tar-esp32cam-repo.yml'
@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Git clone 
+      - name: Git clone and tar
         run: |
           git clone --recurse-submodules https://github.com/Ai-Thinker-Open/Ai-Thinker-Open_ESP32-CAMERA_LAN.git
           zip -9 -r Ai-Thinker-Open_ESP32-CAMERA_LAN Ai-Thinker-Open_ESP32-CAMERA_LAN
@@ -40,10 +40,13 @@ jobs:
       #   with:
       #     name: Ai-Thinker-Open_ESP32-CAMERA_LAN.zip
       #     path: Ai-Thinker-Open_ESP32-CAMERA_LAN.zip
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
 
       - name: Tar Ai-Thinker-Open_ESP32-CAMERA_LAN repo   
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        # if: startsWith(github.ref, 'refs/tags/')
         with: 
-          tag_name: ${{ github.ref }}
+          tag_name: esp32cam-${{ steps.date.outputs.date }}
           files: Ai-Thinker-Open_ESP32-CAMERA_LAN.zip
