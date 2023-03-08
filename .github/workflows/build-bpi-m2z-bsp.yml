@@ -30,7 +30,7 @@ jobs:
       - name: Build BPI-M2Z-bsp
         run: |
           sudo apt-get install u-boot-tools
-          git clone -b tghul-patch-1 git@github.com:tghul/BPI-M2P-bsp-4.4.git
+          git clone https://github.com/BPI-SINOVOIP/BPI-M2P-bsp-4.4.git
           cd BPI-M2P-bsp-4.4
           ./build.sh BPI-M2Z-720P 1
         
@@ -45,4 +45,4 @@ jobs:
         with: 
           tag_name: ${{ github.ref }}
           name: Release ${{ github.ref }}
-          files: BPI-M2Z-720P-linux4.4-8k.img.gz
+          files: out/100MB/BPI-M2Z-720P-linux4.4-8k.img
